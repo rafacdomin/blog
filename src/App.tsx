@@ -1,15 +1,18 @@
 import React from 'react';
+import { SearchProvider } from './hooks/search';
 
 import Routes from './routes';
 import GlobalStyle from './styles/global';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Routes />
+      <SearchProvider>
+        <Routes />
+      </SearchProvider>
     </>
   );
-}
+};
 
 export default App;
