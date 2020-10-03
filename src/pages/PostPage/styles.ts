@@ -22,11 +22,13 @@ export const Container = styled.div`
 export const ProfileContainer = styled.div`
   display: none;
   background: #fff;
+  margin-right: 16px;
 
   padding: 24px;
   border-radius: 20px;
   width: 350px;
   max-height: 350px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   header {
     display: flex;
@@ -112,6 +114,7 @@ export const Main = styled.main`
   background: #fff;
   padding: 2.4rem;
   border-radius: 2rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   h1 {
     font-size: 4rem;
@@ -162,6 +165,7 @@ export const Footer = styled.footer`
   width: 100%;
   background: #fff;
   border-radius: 2rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   margin: 1.6rem 0;
   padding: 2.4rem;
@@ -218,6 +222,7 @@ export const Footer = styled.footer`
 export const CommentContainer = styled.div`
   background: #fff;
   border-radius: 2rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   padding: 2.4rem;
 

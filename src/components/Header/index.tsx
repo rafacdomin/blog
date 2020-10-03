@@ -27,18 +27,20 @@ const Header: React.FC = () => {
 
   return (
     <Container>
-      <button type="button" onClick={handleButtonClick}>
-        B
-      </button>
+      <div>
+        <button type="button" onClick={handleButtonClick}>
+          B
+        </button>
 
-      <input
-        type="text"
-        inputMode="text"
-        placeholder="Search"
-        autoCapitalize="none"
-        value={search}
-        onChange={text => handleTextChange(text)}
-      />
+        <input
+          type="text"
+          inputMode="text"
+          placeholder="Search"
+          autoCapitalize="none"
+          value={search}
+          onChange={text => handleTextChange(text)}
+        />
+      </div>
     </Container>
   );
 };
