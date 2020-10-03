@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
-import Comment, { CommentProps } from '../../components/Comment';
+import PostProps from '../../@types/postProps';
+import UserProps from '../../@types/userProps';
+import CommentProps from '../../@types/commentProps';
+
 import api from '../../services/api';
 import getReadTime from '../../utils/getReadTime';
+import Comment from '../../components/Comment';
+
 import {
   PageContent,
   Container,
@@ -14,28 +19,8 @@ import {
   CommentContainer,
 } from './styles';
 
-interface PostProps {
-  userId: number;
-  title: string;
-  body: string;
-  readTime: number;
-}
-
-interface UserProps {
-  id: string;
-  name: string;
-  email: string;
-  username: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-  };
-  address: {
-    city: string;
-  };
-}
-
 const PostPage: React.FC = () => {
+  const history = useHistory();
   const [post, setPost] = useState<PostProps>({} as PostProps);
   const [user, setUser] = useState<UserProps>({} as UserProps);
   const [comments, setComments] = useState<CommentProps[]>([]);
@@ -69,7 +54,7 @@ const PostPage: React.FC = () => {
               alt="profile_picture"
             />
             <div>
-              <Link to="/">{user.name}</Link>
+              <Link to={`/users/${user.id}/${user.username}`}>{user.name}</Link>
               <span>@{user.username}</span>
               <span>{user.email}</span>
             </div>
@@ -82,7 +67,11 @@ const PostPage: React.FC = () => {
             <strong>City</strong>
             <span>{user.address?.city}</span>
           </div>
-          <button type="button">Ver Perfil</button>
+          <button
+            type="button"
+            onClick={() => history.push(`/users/${user.id}/${user.username}`)}>
+            Ver Perfil
+          </button>
         </ProfileContainer>
 
         <Content>
@@ -95,7 +84,9 @@ const PostPage: React.FC = () => {
                   src={`https://avatars.dicebear.com/api/avataaars/${user?.id}.svg?mood[]=happy`}
                   alt="profile_picture"
                 />
-                <Link to="/">{user.name}</Link>
+                <Link to={`/users/${user.id}/${user.username}`}>
+                  {user.name}
+                </Link>
               </div>
 
               <span>{post.readTime} min read</span>
@@ -112,7 +103,9 @@ const PostPage: React.FC = () => {
                 alt="profile_picture"
               />
               <div>
-                <Link to="/">{user.name}</Link>
+                <Link to={`/users/${user.id}/${user.username}`}>
+                  {user.name}
+                </Link>
                 <span>@{user.username}</span>
                 <span>{user.email}</span>
 

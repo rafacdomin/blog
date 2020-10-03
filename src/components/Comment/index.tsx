@@ -1,13 +1,8 @@
 import React from 'react';
 
-import { Container } from './styles';
+import CommentProps from '../../@types/commentProps';
 
-export interface CommentProps {
-  id: string;
-  name: string;
-  email: string;
-  body: string;
-}
+import { Container } from './styles';
 
 interface CustomProps {
   comment: CommentProps;

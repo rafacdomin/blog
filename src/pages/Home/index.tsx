@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import { useSearch } from '../../hooks/search';
 import Post from '../../components/Post';
 import api from '../../services/api';
-
-import { useSearch } from '../../hooks/search';
 import shuffleArray from '../../utils/shuffleArray';
+
+import PostProps from '../../@types/postProps';
+import UserProps from '../../@types/userProps';
+
 import { Container } from './styles';
-
-export interface PostProps {
-  id: string;
-  title: string;
-  userId: string;
-  body: string;
-}
-
-export interface UserProps {
-  id: string;
-  name: string;
-  email: string;
-  username: string;
-}
 
 const Home: React.FC = () => {
   const { search } = useSearch();

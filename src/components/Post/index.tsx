@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+import PostProps from '../../@types/postProps';
+import UserProps from '../../@types/userProps';
 
 import getReadTime from '../../utils/getReadTime';
-import { UserProps, PostProps } from '../../pages/Home';
 import { Container } from './styles';
 
 interface CustomProps {
@@ -21,7 +23,7 @@ const Post: React.FC<CustomProps> = ({ user, post }) => {
           alt="profile_picture"
         />
         <div>
-          <Link to="/">{user?.name}</Link>
+          <strong>{user?.name}</strong>
           <span>{user?.email}</span>
         </div>
       </header>

@@ -39,6 +39,7 @@ export const ProfileContainer = styled.div`
       width: 80px;
       height: 80px;
       border-radius: 50%;
+      border: 2px solid #e5625e;
     }
 
     > div {
@@ -139,6 +140,7 @@ export const Main = styled.main`
         width: 5.6rem;
         height: 5.6rem;
         border-radius: 50%;
+        border: 2px solid #e5625e;
       }
 
       > a {
@@ -183,6 +185,7 @@ export const Footer = styled.footer`
       width: 9.6rem;
       height: 9.6rem;
       border-radius: 50%;
+      border: 2px solid #e5625e;
     }
 
     div {

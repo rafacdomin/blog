@@ -7,7 +7,7 @@ export const Container = styled.button`
   text-align: start;
 
   padding: 1.6rem 2.4rem;
-  margin: 0.6rem 0.8rem;
+  margin: 0.8rem 0;
   max-width: 72rem;
   width: 100%;
   min-height: 16rem;
@@ -29,6 +29,7 @@ export const Container = styled.button`
       height: 5.6rem;
       width: 5.6rem;
       border-radius: 50%;
+      border: 2px solid #e5625e;
     }
 
     div {
@@ -37,16 +38,9 @@ export const Container = styled.button`
       flex-direction: column;
       margin-left: 1.6rem;
 
-      a {
-        font-weight: bold;
+      strong {
         font-size: 1.6rem;
-        text-decoration: none;
         color: #666;
-        transition: all 0.2s;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
 
       span {
