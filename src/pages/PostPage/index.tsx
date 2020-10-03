@@ -4,7 +4,15 @@ import { Link, useParams } from 'react-router-dom';
 import Comment, { CommentProps } from '../../components/Comment';
 import api from '../../services/api';
 import getReadTime from '../../utils/getReadTime';
-import { Container, Content, Main, Footer, CommentContainer } from './styles';
+import {
+  PageContent,
+  Container,
+  ProfileContainer,
+  Content,
+  Main,
+  Footer,
+  CommentContainer,
+} from './styles';
 
 interface PostProps {
   userId: number;
@@ -14,12 +22,16 @@ interface PostProps {
 }
 
 interface UserProps {
+  id: string;
   name: string;
   email: string;
   username: string;
   company: {
     name: string;
     catchPhrase: string;
+  };
+  address: {
+    city: string;
   };
 }
 
@@ -48,54 +60,79 @@ const PostPage: React.FC = () => {
   }, [post_id]);
 
   return (
-    <Container>
-      <Content>
-        <Main>
-          <h1>{post.title}</h1>
-
+    <PageContent>
+      <Container>
+        <ProfileContainer>
           <header>
-            <div>
-              <img
-                src={`https://avatars.dicebear.com/api/avataaars/${user?.email}.svg?mood[]=happy`}
-                alt="profile_picture"
-              />
-              <Link to="/">{user.name}</Link>
-            </div>
-
-            <span>{post.readTime} min read</span>
-          </header>
-
-          <p>{post.body}</p>
-        </Main>
-
-        <Footer>
-          Posted by:
-          <div>
             <img
-              src={`https://avatars.dicebear.com/api/avataaars/${user?.email}.svg?mood[]=happy`}
+              src={`https://avatars.dicebear.com/api/avataaars/${user?.id}.svg?mood[]=happy`}
               alt="profile_picture"
             />
             <div>
               <Link to="/">{user.name}</Link>
               <span>@{user.username}</span>
               <span>{user.email}</span>
-
-              <p>
-                Company: {user?.company?.name} <br />
-                {user?.company?.catchPhrase}
-              </p>
             </div>
+          </header>
+          <div>
+            <strong>Company</strong>
+            <span>{user.company?.name}</span>
           </div>
-        </Footer>
+          <div>
+            <strong>City</strong>
+            <span>{user.address?.city}</span>
+          </div>
+          <button type="button">Ver Perfil</button>
+        </ProfileContainer>
 
-        <CommentContainer>
-          <h2>Discussion</h2>
-          {comments.map(comment => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-        </CommentContainer>
-      </Content>
-    </Container>
+        <Content>
+          <Main>
+            <h1>{post.title}</h1>
+
+            <header>
+              <div>
+                <img
+                  src={`https://avatars.dicebear.com/api/avataaars/${user?.id}.svg?mood[]=happy`}
+                  alt="profile_picture"
+                />
+                <Link to="/">{user.name}</Link>
+              </div>
+
+              <span>{post.readTime} min read</span>
+            </header>
+
+            <p>{post.body}</p>
+          </Main>
+
+          <Footer>
+            Posted by:
+            <div>
+              <img
+                src={`https://avatars.dicebear.com/api/avataaars/${user?.id}.svg?mood[]=happy`}
+                alt="profile_picture"
+              />
+              <div>
+                <Link to="/">{user.name}</Link>
+                <span>@{user.username}</span>
+                <span>{user.email}</span>
+
+                <p>
+                  Company: {user?.company?.name} <br />
+                  {user?.company?.catchPhrase}
+                </p>
+              </div>
+            </div>
+          </Footer>
+
+          <CommentContainer>
+            <h2>Discussion</h2>
+            {comments.map(comment => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </CommentContainer>
+        </Content>
+      </Container>
+    </PageContent>
   );
 };
 

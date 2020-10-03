@@ -1,17 +1,117 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const PageContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 8rem;
+
+  @media (min-width: 1100px) {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 'content profile';
+  }
+`;
+
+export const ProfileContainer = styled.div`
+  display: none;
+  background: #fff;
+
+  padding: 24px;
+  border-radius: 20px;
+  width: 350px;
+  max-height: 350px;
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    > div {
+      margin-left: 16px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      a {
+        text-decoration: none;
+        color: #666;
+        font-size: 2.4rem;
+        transition: all 0.2s;
+
+        &:hover {
+          color: #e5625e;
+          text-decoration: underline;
+        }
+      }
+
+      span {
+        width: 100%;
+      }
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    strong {
+      color: #999;
+      margin-bottom: 4px;
+    }
+  }
+
+  button {
+    width: 100%;
+    min-height: 40px;
+    border: none;
+    background: #e5625e;
+    color: #fff;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #e5925e;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: profile;
+  }
+`;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 110rem;
+  margin: 0 1.6rem;
+
+  @media (min-width: 1100px) {
+    grid-area: content;
+  }
 `;
 
 export const Main = styled.main`
-  max-width: 72rem;
-  padding: 0 1.6rem;
-  padding-top: 8rem;
+  background: #fff;
+  padding: 2.4rem;
+  border-radius: 2rem;
 
   h1 {
     font-size: 4rem;
@@ -60,10 +160,11 @@ export const Main = styled.main`
 
 export const Footer = styled.footer`
   width: 100%;
-  max-width: 72rem;
+  background: #fff;
+  border-radius: 2rem;
 
-  margin: 3.2rem 0;
-  padding: 2.4rem 1.6rem;
+  margin: 1.6rem 0;
+  padding: 2.4rem;
   border: 4px solid #e5625e;
   border-right: none;
   border-left: none;
@@ -89,7 +190,6 @@ export const Footer = styled.footer`
       > a {
         text-decoration: none;
         color: #000;
-        margin-left: 0.8rem;
         font-size: 2.4rem;
         transition: all 0.2s;
 
@@ -116,9 +216,10 @@ export const Footer = styled.footer`
 `;
 
 export const CommentContainer = styled.div`
-  max-width: 72rem;
+  background: #fff;
+  border-radius: 2rem;
 
-  padding: 0 1.6rem;
+  padding: 2.4rem;
 
   h2 {
     font-size: 3.2rem;

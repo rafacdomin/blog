@@ -17,7 +17,7 @@ const Post: React.FC<CustomProps> = ({ user, post }) => {
     <Container onClick={() => history.push(`/posts/${post.id}`)}>
       <header>
         <img
-          src={`https://avatars.dicebear.com/api/avataaars/${user?.email}.svg?mood[]=happy`}
+          src={`https://avatars.dicebear.com/api/avataaars/${user?.id}.svg?mood[]=happy`}
           alt="profile_picture"
         />
         <div>

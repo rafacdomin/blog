@@ -18,7 +18,7 @@ const Comment: React.FC<CustomProps> = ({ comment }) => {
     <Container>
       <header>
         <img
-          src={`https://avatars.dicebear.com/api/avataaars/${comment.email}.svg?mood[]=happy`}
+          src={`https://avatars.dicebear.com/api/avataaars/${comment.id}.svg?mood[]=happy`}
           alt="profile_picture"
         />
 
