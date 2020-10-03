@@ -58,7 +58,7 @@ const Profile: React.FC = () => {
         </footer>
       </ProfileContent>
       {posts
-        .filter(post => post.userId === user_id)
+        .filter(post => String(post.userId) === user_id)
         .map(post => (
           <Post key={post.id} user={user} post={post} />
         ))}
