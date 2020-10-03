@@ -8,7 +8,7 @@ export const Container = styled.button`
 
   padding: 1.6rem 2.4rem;
   margin: 0.6rem 0.8rem;
-  max-width: 56rem;
+  max-width: 72rem;
   width: 100%;
   min-height: 16rem;
   content-visibility: auto;

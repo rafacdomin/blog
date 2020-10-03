@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import { Container } from './styles';
+import getReadTime from '../../utils/getReadTime';
 import { UserProps, PostProps } from '../../pages/Home';
+import { Container } from './styles';
 
 interface CustomProps {
   user: UserProps | undefined;
@@ -10,20 +11,10 @@ interface CustomProps {
 }
 
 const Post: React.FC<CustomProps> = ({ user, post }) => {
-  const [readTime, setReadTime] = useState(() => {
-    const textLenght = post.body.split(' ').length;
-
-    if (textLenght > 0) {
-      const value = Math.ceil(textLenght / 220);
-
-      return value;
-    }
-
-    return 1;
-  });
+  const history = useHistory();
 
   return (
-    <Container onClick={() => console.log(post.title)}>
+    <Container onClick={() => history.push(`/posts/${post.id}`)}>
       <header>
         <img
           src={`https://avatars.dicebear.com/api/avataaars/${user?.email}.svg?mood[]=happy`}
@@ -36,9 +27,10 @@ const Post: React.FC<CustomProps> = ({ user, post }) => {
       </header>
 
       <h1>{post.title}</h1>
+      <p>{post.body}</p>
 
       <footer>
-        <span>{readTime} min read</span>
+        <span>{getReadTime(post.body)} min read</span>
       </footer>
     </Container>
   );

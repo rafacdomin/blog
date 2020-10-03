@@ -11,7 +11,7 @@ export default createGlobalStyle`
   :root{
     font-size: 60%;
   }
-  
+
   body {
     background: #FFFFFF;
     -webkit-font-smoothing: antialiased;
@@ -24,7 +24,7 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-  
+
   @media (min-width: 1100px){
     :root{
       font-size: 62.5%;

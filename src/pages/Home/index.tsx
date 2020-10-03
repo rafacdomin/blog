@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Post from '../../components/Post';
 import api from '../../services/api';
 
-import Header from '../../components/Header';
-import { Container } from './styles';
 import { useSearch } from '../../hooks/search';
+import shuffleArray from '../../utils/shuffleArray';
+import { Container } from './styles';
 
 export interface PostProps {
   id: string;
@@ -26,17 +26,6 @@ const Home: React.FC = () => {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [users, setUsers] = useState<UserProps[]>([]);
 
-  const shuffleArray = useCallback(array => {
-    let i = array.length - 1;
-    for (; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  }, []);
-
   useEffect(() => {
     api.get('/posts').then(response => {
       setPosts(shuffleArray(response.data));
@@ -45,24 +34,20 @@ const Home: React.FC = () => {
     api.get('/users').then(response => {
       setUsers(response.data);
     });
-  }, [shuffleArray]);
+  }, []);
 
   return (
-    <>
-      <Header />
-
-      <Container>
-        {posts
-          .filter(post => post.title.includes(search))
-          .map(post => (
-            <Post
-              key={post.id}
-              user={users.find(user => user.id === post.userId)}
-              post={post}
-            />
-          ))}
-      </Container>
-    </>
+    <Container>
+      {posts
+        .filter(post => post.title.includes(search))
+        .map(post => (
+          <Post
+            key={post.id}
+            user={users.find(user => user.id === post.userId)}
+            post={post}
+          />
+        ))}
+    </Container>
   );
 };
 
