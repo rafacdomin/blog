@@ -16,8 +16,7 @@
 </p>
 
 ## About
-
-ReactJS blog that uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) data to simulate posts, comments and users.
+Blog created with ReactJS that uses data from [JSONPlaceholder](https://jsonplaceholder.typicode.com) to simulate posts, comments and users.
 
 <p align='center'>
   <img src="https://github.com/rafacdomin/blog/blob/master/.github/postpage.png?raw=true" alt="Homepage" width="700"/>
